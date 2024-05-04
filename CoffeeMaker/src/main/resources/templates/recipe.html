@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Add a Recipe</title>
+	<style>
+		input.ng-valid {
+			background-color: lightgreen;
+		}
+		
+		input.ng-dirty.ng-invalid-required,input.ng-dirty.ng-invalid-number {
+			background-color: red;
+		}
+
+		input.ng-dirty.ng-invalid-min {
+			background-color: yellow;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/app.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+</head>
+<body>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('addRecipeCtrl', function($scope, $http) {
+			$scope.reset = function() {
+				$scope.recipe = {
+					"name" : "",
+					"price" : undefined,
+					"ingredients" : { }
+				};
+				$scope.response = undefined;
+				$scope.getIngredients();
+				if ($scope.addRecipeForm) {
+					$scope.addRecipeForm.$setPristine();
+				}
+			}
+
+			$scope.submit = function() {
+				$scope.addRecipe();
+				$scope.reset();
+			}
+
+			$scope.setResponse = function(response) {
+				$scope.response = response.data.message;
+			}
+
+			$scope.addRecipe = function() {
+				$http.post("/api/v1/recipes", $scope.recipe).then(
+						function(success) { $scope.setResponse(success) },
+						function(failure) { $scope.setResponse(failure) });
+			}
+
+			$scope.getIngredients = function() {
+				$http.get("/api/v1/ingredients").then(
+						function(success) { $scope.ingredientsAvailable = success.data },
+						function(failure) { $scope.setResponse(failure) });
+			}
+
+			$scope.addIngredient = function(ingredient) {
+				$scope.recipe.ingredients[ingredient] = undefined;
+				$scope.ingredientsAvailable.splice($scope.ingredientsAvailable.indexOf(ingredient), 1);
+				$scope.ingDrop = 'default';
+			}
+
+			$scope.removeIngredient = function(ingredient) {
+				delete $scope.recipe.ingredients[ingredient];
+				$scope.ingredientsAvailable.push(ingredient);
+			}
+
+			$scope.checkRecipe = function() {
+				return $scope.addRecipeForm.$invalid || Object.keys($scope.recipe.ingredients).length === 0;
+			}
+
+			$scope.reset();
+		});
+	</script>
+
+	<div ng-app="myApp" class="container ng-cloak"
+		ng-controller="addRecipeCtrl as ctrl">
+		<div class="card">
+			<div class="card-header">
+				<span class="lead">Add a Recipe</span>
+			</div>
+
+			<div class="card-body">
+				<form ng-submit="submit()" name="addRecipeForm" class="row g-3">
+					<div class="col-md-6">
+						<label for="name" class="form-label">Name</label>
+						<input type="text" ng-model="recipe.name" name="name" class="form-control" placeholder="Enter recipe name" required />
+						<div ng-show="addRecipeForm.name.$dirty && addRecipeForm.name.$error.required" class="invalid-feedback">
+							This is a required field.
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<label for="price" class="form-label">Price</label>
+						<input type="number" ng-model="recipe.price" name="price" class="form-control" placeholder="Enter recipe price" required min="0"/>
+						<div ng-show="addRecipeForm.price.$dirty && addRecipeForm.price.$error.required" class="invalid-feedback">
+							This is a required field. Minimum amount is 0.
+						</div>
+					</div>
+
+					<div ng-repeat="(ing, amt) in recipe.ingredients" class="col-md-6">
+						<label for="{{ing}}" class="form-label">{{ing}}</label>
+						<input type="number" ng-model="recipe.ingredients[ing]" name="{{ing}}" class="form-control" placeholder="Enter amount of {{ing}}" required min="0"/>
+						<div ng-show="addRecipeForm[ing].$dirty && addRecipeForm[ing].$error.required" class="invalid-feedback">
+							This is a required field. Minimum amount is 0.
+						</div>
+						<button type="button" ng-click="removeIngredient(ing)" class="btn btn-info">Remove</button>
+					</div>
+
+					<div class="col-md-6">
+						<label for="ingDrop" class="form-label">Add Ingredient</label>
+						<select id="ingDrop" class="form-select" ng-model="ingDrop" ng-init="ingDrop = 'default'">
+							<option value="default" selected>Select an ingredient</option>
+							<option ng-repeat="ing in ingredientsAvailable">{{ing}}</option>
+						</select>
+						<button type="button" ng-click="addIngredient(ingDrop)" class="btn btn-success" ng-disabled="ingDrop == 'default'">Add</button>
+						<a href="/ingredient.html" class="btn btn-warning">Create</a>
+					</div>
+
+					<div class="col-12">
+						<button type="submit" class="btn btn-primary" ng-disabled="checkRecipe()">Submit</button>
+						<button type="button" ng-click="reset()" class="btn btn-warning" ng-disabled="addRecipeForm.$pristine">Reset Form</button>
+					</div>
+				</form>
+			</div>
+			<div ng-show="response != undefined">{{response}}</div>
+		</div>
+		<a href="/staff" class="btn btn-link">Home</a>
+	</div>
+</body>
+</html>

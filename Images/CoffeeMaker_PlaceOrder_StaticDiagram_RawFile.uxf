@@ -1,0 +1,77 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>279</x><y>90</y><w>360</w><h>414</h></coordinates><panel_attributes>edu.ncsu.csc.CoffeeMaker.controllers
+--
+bg=cyan</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>117</y><w>306</w><h>153</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+/APIController/
+--
+_#BASE_PATH : String_
+_-GSON : Gson_
+--
+_#toJson(obj:Object) : String_
+_#toJson(obj:Object, cls:Class&lt;JSONResponse&gt;) : String_
+_#responseMessage(status:String, message:String) : String_
+_#errorResponse(message:String) : String_
+_#successResponse(message:String) : String_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>396</y><w>252</w><h>90</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+JSONResponse
+--
+#status : String
+#message : String
+--
++JSONResponse(status:String, message:String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>423</x><y>261</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>657</x><y>81</y><w>405</w><h>423</h></coordinates><panel_attributes>edu.ncsu.csc.CoffeeMaker.models
+--
+bg=green</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>297</x><y>576</y><w>396</w><h>162</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+/Service/
+--
+--
+/#getRepository() : JpaRepository&lt;DomainObject, ? extends Object&gt;/
++save(obj: DomainObject) : void
++findAll() : List&lt;? extends DomainObject&gt;
++saveAll(objects: List&lt;? extends DomainObject&gt;): void
++delete(obj: DomainObject): void
++deleteAll(): void
++count(): long
+#findBy(example: Example&lt;DomainObject&gt;): List&lt;? extends DomainObject&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>666</x><y>225</y><w>387</w><h>252</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+Order
+--
+-id : Long
+-username: String
+-name: String
+-payment: Int
+-recipe: Recipe
+--
++Order()
++Order(username:String, name:String, payment:Int, recipe:Recipe): Order
++getUsername(): String
++setUsername(username:String): void
++getName(): String
++setName(name:String): void
++getPayment(): Int
++setPayment(payment: Int): void
++getRecipe(): Recipe
++setRecipe(recipe:Recipe): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>801</x><y>180</y><w>27</w><h>63</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>747</x><y>108</y><w>108</w><h>81</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+/DomainObject/
+--
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>765</y><w>252</w><h>99</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+OrderService
+--
+-orderService: OrderRepository
+--
+#getRepository(): JpaRepository
++findByName(name: String): List&lt;Order&gt;
++saveOrder(order:Order): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>477</x><y>729</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>729</x><y>522</y><w>351</w><h>108</h></coordinates><panel_attributes>edu.ncsu.csc.CoffeeMaker.repositories
+--
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>747</x><y>558</y><w>315</w><h>54</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+OrderRepository extends JpaRepository&lt;Order, Long&gt;
+--
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>306</x><y>297</y><w>243</w><h>81</h></coordinates><panel_attributes>&lt;&lt;Java Class&gt;&gt;
+APIOrderController
+--
+-orderService : OrderService
+--
++createOrder( @RequestBody final Order order ): ResponseEntity</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>279</x><y>540</y><w>432</w><h>342</h></coordinates><panel_attributes>edu.ncsu.csc.CoffeeMaker.services
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element></diagram>
