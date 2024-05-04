@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Add Ingredient</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+	<script>
+		angular
+			.module('ingredientApp', [])
+			.controller(
+				'IngredientCtrl',
+				function ($scope, $http, $q) {
+					// Perform get Request and populate list with current ingredients
+					$scope.inventory;
+					$scope.success;
+					$http.get("/api/v1/inventory").then(function (response) {
+						$scope.inventory = response.data;
+					});
+
+					$scope.newIngredient = {
+						name: '',
+						amount: 0
+					};
+
+					$scope.addIngredient = function () {
+						// Check for positive integer units
+						if (!Number.isInteger($scope.newIngredient.amount)
+							|| $scope.newIngredient.amount <= 0) {
+							alert('Invalid unit. Units must be positive integers.');
+							return;
+						}
+
+						// Check for duplicate ingredient
+						for (let i = 0; i < $scope.inventory.inventoryList.length; i++) {
+							if ($scope.inventory.inventoryList[i].name.toLowerCase() == $scope.newIngredient.name.toLowerCase()) {
+								alert('Duplicate Ingredient');
+								return;
+							}
+						}
+
+						// Post request -
+						// if success; then add to list
+						// if not; alert and return
+
+						$http.post("/api/v1/ingredients", $scope.newIngredient).then(
+							function (success) {
+								$scope.success = true;
+								console.log("we good");
+								$http.get("/api/v1/inventory").then(function (response) {
+									$scope.inventory = response.data;
+								});
+							}, function (rejection) {
+								console.error("Error while adding ingredient");
+							});
+
+						// Add ingredient to list
+
+						// Reset form
+						$scope.newIngredient = {
+							name: '',
+							unit: 0
+						};
+					};
+
+					$scope.goBackToMenu = function () {
+						// Implement the logic to return to the main menu
+						alert('Returning to main menu...');
+					};
+				});
+	</script>
+</head>
+
+<body ng-app="ingredientApp" ng-controller="IngredientCtrl">
+
+<div class="generic-container">
+        <h2>Add Ingredient</h2>
+        <form ng-submit="addIngredient()">
+            <div class="form-group">
+                <label for="name">Ingredient Name:</label>
+                <input type="text" id="name" ng-model="newIngredient.name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="unit">Units (positive integer):</label>
+                <input type="number" id="amount" ng-model="newIngredient.amount" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Ingredient</button>
+        </form>
+
+        <h3>Ingredients List</h3>
+        <ul>
+            <div ng-repeat="(user, commits) in inventory track by $index">
+                <li ng-repeat="commit in commits">{{commit.name}}</li>
+            </div>
+        </ul>
+
+        <a href="/index" class="btn btn-default floatRight">Home</a>
+    </div>
+
+</html>
