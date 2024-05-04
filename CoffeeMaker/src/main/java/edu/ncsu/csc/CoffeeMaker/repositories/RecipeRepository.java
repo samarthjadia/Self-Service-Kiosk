@@ -8,7 +8,7 @@ import edu.ncsu.csc.CoffeeMaker.models.Recipe;
  * RecipeRepository is used to provide CRUD operations for the Recipe model.
  * Spring will generate appropriate code with JPA.
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  *
  */
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {

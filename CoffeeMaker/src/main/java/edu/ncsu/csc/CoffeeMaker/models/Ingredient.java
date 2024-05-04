@@ -4,6 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * DAO Representing an Ingredient
+ *
+ * @author Samarth Jadia (ssjadia)
+ */
 @Entity
 public class Ingredient extends DomainObject {
     /** Ingredient ID */

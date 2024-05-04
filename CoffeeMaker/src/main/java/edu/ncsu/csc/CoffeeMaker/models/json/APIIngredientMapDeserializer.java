@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * @author Samarth Jadia (ssjadia)
+ */
 public class APIIngredientMapDeserializer extends JsonDeserializer<Map<String, Integer>> {
     @Override
     public Map<String, Integer> deserialize ( final JsonParser p, final DeserializationContext ctxt )

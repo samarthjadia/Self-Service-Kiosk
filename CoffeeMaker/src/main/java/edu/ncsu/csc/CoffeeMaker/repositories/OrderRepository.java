@@ -10,7 +10,7 @@ import edu.ncsu.csc.CoffeeMaker.models.Order;
 /**
  * Order repository
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 public interface OrderRepository extends JpaRepository<Order, Long> {
     /**

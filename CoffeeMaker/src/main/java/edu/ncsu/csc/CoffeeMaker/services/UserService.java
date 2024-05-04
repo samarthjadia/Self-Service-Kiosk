@@ -16,7 +16,7 @@ import edu.ncsu.csc.CoffeeMaker.repositories.UserRepository;
  * authentication. This class extends Service and implements UserDetailsService
  * (needed DTO for Spring Security authentication).
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 @Component
 @Transactional

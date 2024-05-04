@@ -20,7 +20,7 @@ import edu.ncsu.csc.CoffeeMaker.services.RecipeService;
 /**
  * The controller class defining the end-points for handling orders
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
 @RestController

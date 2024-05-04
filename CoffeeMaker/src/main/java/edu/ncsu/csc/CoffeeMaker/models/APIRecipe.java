@@ -8,6 +8,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import edu.ncsu.csc.CoffeeMaker.models.json.APIIngredientMapDeserializer;
 
+/**
+ * J-Unit Tests for APIRecipe Class
+ *
+ * @author Samarth Jadia (ssjadia)
+ */
 public class APIRecipe {
     private final String               name;
     private final Integer              price;

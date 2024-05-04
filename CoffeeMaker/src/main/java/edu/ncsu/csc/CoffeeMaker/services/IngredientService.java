@@ -7,6 +7,11 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.ncsu.csc.CoffeeMaker.models.Ingredient;
 import edu.ncsu.csc.CoffeeMaker.repositories.IngredientRepository;
 
+/**
+ * Service class for ingredient functionality
+ *
+ * @author Samarth Jadia (ssjadia)
+ */
 @Component
 @Transactional
 public class IngredientService extends Service<Ingredient, Long> {

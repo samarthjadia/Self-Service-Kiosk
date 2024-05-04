@@ -23,7 +23,7 @@ import edu.ncsu.csc.CoffeeMaker.services.RecipeService;
  * Spring will automatically convert all of the ResponseEntity and List results
  * to JSON
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  *
  */
 @SuppressWarnings ( { "unchecked", "rawtypes" } )

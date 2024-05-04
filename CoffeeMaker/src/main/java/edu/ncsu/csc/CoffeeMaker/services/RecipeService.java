@@ -14,7 +14,7 @@ import edu.ncsu.csc.CoffeeMaker.repositories.RecipeRepository;
  * addition to all functionality from `Service`, we also have functionality for
  * retrieving a single Recipe by name.
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  */
 @Component
 @Transactional

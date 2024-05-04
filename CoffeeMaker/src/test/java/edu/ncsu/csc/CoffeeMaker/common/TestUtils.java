@@ -10,7 +10,7 @@ import com.google.gson.reflect.TypeToken;
 /**
  * Class for handy utils shared across all of the API tests
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  *
  */
 public class TestUtils {

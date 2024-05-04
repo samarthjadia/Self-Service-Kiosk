@@ -12,6 +12,8 @@ import edu.ncsu.csc.CoffeeMaker.repositories.OrderRepository;
 
 /**
  * Service class for managing Orders
+ *
+ * @author Samarth Jadia (ssjadia)
  */
 @Component
 @Transactional

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * the approprate HTML page in the /src/main/resources/templates folder. For a
  * larger application, this should be split across multiple controllers.
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  */
 @Controller
 public class MappingController {

@@ -41,6 +41,8 @@ import edu.ncsu.csc.CoffeeMaker.services.RecipeService;
 
 /**
  * Test Class for Order controller
+ *
+ * @author Samarth Jadia (ssjadia)
  */
 @SpringBootTest
 @AutoConfigureMockMvc

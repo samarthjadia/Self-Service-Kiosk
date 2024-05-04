@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * libraries. See RecipeRepository and RecipeService for the other two pieces
  * used for database support.
  *
- * @author Kai Presler-Marshall
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  */
 @Entity
 public class Recipe extends DomainObject {

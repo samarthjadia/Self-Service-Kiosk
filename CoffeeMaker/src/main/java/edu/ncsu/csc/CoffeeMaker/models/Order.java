@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * DAO/Model class for Order object representing an order that a customer has
  * placed
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 @Entity
 @Table ( name = "orders" )

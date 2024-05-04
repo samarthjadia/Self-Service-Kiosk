@@ -28,7 +28,7 @@ import edu.ncsu.csc.CoffeeMaker.repositories.UserRepository;
  * restrictions on what pages customers can access and what pages staff can
  * access.
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 @Configuration
 @EnableWebSecurity

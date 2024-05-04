@@ -26,8 +26,7 @@ import edu.ncsu.csc.CoffeeMaker.models.DomainObject;
  * @param <K>
  *            Type of the key for this entity
  *
- * @author Kai Presler-Marshall
- * @author Bruno Volpato da Cunha
+ * @author Samarth Jadia (ssjadia), Kai Presler-Marshall
  *
  */
 abstract public class Service <T extends DomainObject, K> {
@@ -125,7 +124,7 @@ abstract public class Service <T extends DomainObject, K> {
 
     /**
      * Checks to see if an object with the provided ID exists or not
-     * 
+     *
      * @param id
      *            Id to check for existence of
      * @return If the object was found
@@ -136,7 +135,7 @@ abstract public class Service <T extends DomainObject, K> {
 
     /**
      * Finds an object with the provided ID
-     * 
+     *
      * @param id
      *            ID of the object to find
      * @return The found object, null if none

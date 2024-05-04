@@ -14,7 +14,11 @@ import edu.ncsu.csc.CoffeeMaker.models.User;
 import edu.ncsu.csc.CoffeeMaker.services.UserService;
 
 @SuppressWarnings ( { "unchecked", "rawtypes" } )
-
+/**
+ * Handles Endpoint requests regarding user roles functionality
+ *
+ * @author Samarth Jadia (ssjadia)
+ */
 @RestController
 public class APIUserController extends APIController {
     /**

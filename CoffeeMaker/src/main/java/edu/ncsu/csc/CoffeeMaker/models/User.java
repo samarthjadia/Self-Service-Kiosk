@@ -11,7 +11,7 @@ import javax.persistence.Table;
 /**
  * Model class for User Roles
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 @Entity
 @Table ( name = "users" )

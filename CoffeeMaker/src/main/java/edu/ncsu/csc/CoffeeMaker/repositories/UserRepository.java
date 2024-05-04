@@ -7,7 +7,7 @@ import edu.ncsu.csc.CoffeeMaker.models.User;
 /**
  * Repository for user
  *
- * @author ssjadia, efhaske, sturner4
+ * @author Samarth Jadia (ssjadia), efhaske, sturner4
  */
 public interface UserRepository extends JpaRepository<User, Long> {
     /**
